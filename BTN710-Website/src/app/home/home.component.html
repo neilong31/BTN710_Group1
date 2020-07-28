@@ -1,4 +1,4 @@
-<div class="login-container">
+<div class="login-container" *ngIf="!auth.loggedIn">
     <br>
     <br>
     <br>
@@ -8,12 +8,15 @@
           <mdb-card-title>
             <h4>Login</h4>
           </mdb-card-title>
-          
+
           <mdb-card-text> Login with the password you know 😉
           </mdb-card-text>
-          <input class="form-control" id="password" name="password" type="password" required>
+          <input class="form-control" id="password" name="password" type="password" [(ngModel)]="enteredPassword"required>
           <br>
-          <a href="#" mdbBtn color="primary" (click)="login()" mdbWavesEffect>Login</a>
+          <a mdbBtn color="primary" (click)="login()" mdbWavesEffect>Login</a>
         </mdb-card-body>
       </mdb-card>
-</div> 
+</div>
+<div class="container" *ngIf="auth.loggedIn">
+  <h2>Successfully Authenticated! 🥳</h2>
+</div>

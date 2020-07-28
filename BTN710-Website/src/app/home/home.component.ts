@@ -10,6 +10,7 @@ import * as bcrypt from 'bcryptjs';
 export class HomeComponent implements OnInit {
   pass: String;
   enteredPassword: String;
+  invalidPassword = false;
 
   constructor(public auth: AuthService) {}
 
@@ -20,6 +21,7 @@ export class HomeComponent implements OnInit {
       if (bcrypt.compareSync(this.enteredPassword, this.auth.password)) {
         this.auth.loggedIn = true;
       }
+      this.invalidPassword = true;
       this.enteredPassword = '';
     }
   }
